@@ -22,21 +22,31 @@ class Player(CircleShape):
         c = self.position - forward * self.radius + right
         return [a, b, c]
     
+    #update method to handle player movement and rotation
+    def update(self, dt):
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_a]:
+            self.rotate(-dt)
+
+        if keys[pygame.K_d]:
+            self.rotate(dt)
+        
+        if keys[pygame.K_w]:
+            self.move(dt)
+
+        if keys[pygame.K_s]:
+            self.move(-dt)  
+            
+    # player rotation ie turn left/right        
     def rotate(self, dt):
         """Rotate the player based on the turn speed."""
         self.rotation += PLAYER_TURN_SPEED * dt
         # self.rotation %= 360
 
-    def update(self, dt):
-        keys = pygame.key.get_pressed()
-
-        if keys[pygame.K_a]:
-            self.rotate(dt)
-
-        if keys[pygame.K_d]:
-            self.rotate(-dt)
-            
-    # def move(self):
-    #     """Move the player in the current direction."""
-    #     self.x += self.speed * math.cos(math.radians(self.direction))
-    #     self.y += self.speed * math.sin(math.radians(self.direction))
+    
+    # move the player forward/backward
+    def move(self, dt):
+        """Move the player in the current direction."""
+        forward = pygame.Vector2(0, 1).rotate(self.rotation)
+        self.position += forward * PLAYER_SPEED * dt
