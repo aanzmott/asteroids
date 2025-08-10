@@ -5,9 +5,6 @@ from constants import *
 class Player(CircleShape):
     def __init__(self, x, y):
         super().__init__(x, y, PLAYER_RADIUS)
-        self.color = (0, 255, 0)  # Green color for the player
-        self.speed = 5  # Speed of the player
-        self.direction = 0  # Direction in degrees
         self.rotation = 0  # Rotation angle in degrees
 
     def draw(self, screen):
