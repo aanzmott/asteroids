@@ -3,12 +3,11 @@
 # throughout this file
 import pygame
 import sys
-
-from constants import *
-from player import Player
-from asteroid import Asteroid
-from asteroidfield import AsteroidField
-from shot import Shot
+from config import (
+    SCREEN_WIDTH,
+    SCREEN_HEIGHT
+)
+from entities import Player, Asteroid, Shot, AsteroidField
 
 
 
